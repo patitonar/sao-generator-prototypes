@@ -2,7 +2,9 @@
 
 Based on https://github.com/egoist/poi/tree/master/create-poi-app
 
-Uses [SAO v1.6](https://github.com/saojs/sao) to generate a project
+Uses [SAO v1.6](https://github.com/saojs/sao/tree/v1.6.1) to generate a project.
+
+SAO Docs: https://v1.saojs.org/saofile.html
 
 Install dependencies
 ```bash
