@@ -1,5 +1,6 @@
 const mainActions = require('./actions/main')
 const ethStackActions = require('./actions/ethStack')
+const solhintActions = require('./actions/solhint')
 
 module.exports = {
   prepare() {
@@ -40,6 +41,11 @@ module.exports = {
             value: 'javascript'
           }
         ]
+      },
+      {
+        name: 'solhint',
+        message: 'Do you want to add Solhint?',
+        type: 'confirm'
       }
     ]
   },
@@ -47,6 +53,7 @@ module.exports = {
     return [
       ...mainActions(this.answers),
       ...ethStackActions(this.answers),
+      ...solhintActions(this.answers)
     ]
   },
   async completed() {
