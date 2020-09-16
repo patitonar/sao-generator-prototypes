@@ -1,5 +1,9 @@
 module.exports = (answers) => {
-  const when = (condition, value, fallback) => (condition ? value : fallback)
+
+  if (answers.language !== 'typescript') {
+    return []
+  }
+
   return [
     {
       type: 'move',
