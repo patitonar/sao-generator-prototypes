@@ -29,6 +29,7 @@ module.exports = (answers) => {
   }
 
   const truffleTsDevDependencies = {
+    ...truffleJsDevDependencies,
     "@typechain/ethers-v4": "^1.0.1",
     "@typechain/truffle-v4": "^2.0.3",
     "@typechain/truffle-v5": "^2.0.2",
@@ -44,6 +45,7 @@ module.exports = (answers) => {
   }
 
   const waffleTsDevDependencies = {
+    ...waffleJsDevDependencies,
     "@typechain/ethers-v4": "^1.0.1",
     "@typechain/truffle-v4": "^2.0.3",
     "@typechain/truffle-v5": "^2.0.2",
