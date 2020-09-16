@@ -5,7 +5,7 @@
     "test": "npx buidler test"
   },
   "devDependencies": {
-    "@nomiclabs/buidler": "1.4.5",
+    "@nomiclabs/buidler": "^1.4.5",
     "@nomiclabs/buidler-ethers": "^2.0.0",
     "@nomiclabs/buidler-waffle": "^2.1.0",
     "chai": "^4.2.0",
