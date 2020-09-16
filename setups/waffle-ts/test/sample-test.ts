@@ -1,9 +1,8 @@
 import { waffle, ethers } from "@nomiclabs/buidler";
 const { deployContract } = waffle;
-import { expect } from "chai";
-
 import GreeterArtifact from "../artifacts/Greeter.json";
 import { Greeter } from "../typechain/Greeter";
+import { expect } from "chai";
 
 describe("Greeter", function() {
   let greeter: Greeter;
