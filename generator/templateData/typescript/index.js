@@ -35,6 +35,22 @@ const getTestContractInstance = (useWeb3) => useWeb3
 
 `
 
+const getScriptsImports = (useWeb3) => useWeb3
+  ? `const bre = require("@nomiclabs/buidler");
+// @ts-ignore
+const Greeter = artifacts.require("Greeter");
+`
+  : `import { ethers } from "@nomiclabs/buidler";
+import { Contract, ContractFactory } from "ethers";
+`
+
+const getScriptsDeploy = (useWeb3) => useWeb3
+  ? `  const greeter = await Greeter.new("Hello, world!");`
+  : `  const Greeter: ContractFactory = await ethers.getContractFactory("Greeter");
+  const greeter: Contract = await Greeter.deploy("Hello, Buidler!");
+
+  await greeter.deployed();`
+
 module.exports = (answers) => {
   const useWeb3 = answers.ethStack === 'web3'
   const typeChainTarget = useWeb3 ? "truffle" : "ethers-v4"
@@ -47,6 +63,8 @@ module.exports = (answers) => {
     buidlerExport: getBuidlerExport(typeChainTarget),
     testImports: getTestImports(useWeb3),
     testContractVar: useWeb3 ? null : "  let greeter: Greeter;\n\n",
-    testContractInstance: getTestContractInstance(useWeb3)
+    testContractInstance: getTestContractInstance(useWeb3),
+    scriptsImports: getScriptsImports(useWeb3),
+    scriptsDeploy: getScriptsDeploy(useWeb3)
   }
 }
