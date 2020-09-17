@@ -35,9 +35,9 @@ module.exports = (answers) => {
   const useWeb3 = answers.ethStack === 'web3'
 
   return {
-    artifactImport: useWeb3
-      ? "const CounterArtifact = artifacts.require('Counter');\n"
-      : "const CounterArtifact = require(\"../artifacts/Counter.json\");\n",
+    buidlerUsePluginEthStack: useWeb3
+      ? "usePlugin(\"@nomiclabs/buidler-truffle5\");\n"
+      : "usePlugin(\"@nomiclabs/buidler-waffle\");\n",
     testImports: getTestImports(useWeb3),
     testContractInstance: getTestContractInstance(useWeb3),
     scriptsImports: getScriptsImports(useWeb3),

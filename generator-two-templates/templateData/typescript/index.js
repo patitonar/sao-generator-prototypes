@@ -43,9 +43,10 @@ module.exports = (answers) => {
   const useWeb3 = answers.ethStack === 'web3'
 
   return {
-    artifactImport: useWeb3
-      ? "const CounterArtifact = artifacts.require('Counter');\n"
-      : "import CounterArtifact from \"../artifacts/Counter.json\";\n",
+    buidlerUsePluginEthStack: useWeb3
+      ? "usePlugin(\"@nomiclabs/buidler-truffle5\");\n"
+      : "usePlugin(\"@nomiclabs/buidler-waffle\");\n",
+    typechainTarget: useWeb3 ? "truffle" : "ethers-v4",
     testImports: getTestImports(useWeb3),
     testContractVar: useWeb3 ? null : "  let greeter: Greeter;\n\n",
     testContractInstance: getTestContractInstance(useWeb3),

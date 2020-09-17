@@ -7,7 +7,7 @@ const config: BuidlerConfig = {
   solc: {
     version: "0.6.8",
   },
- typechain: {
+  typechain: {
     outDir: "typechain",
     target: "ethers-v4",
   },
