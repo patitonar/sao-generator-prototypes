@@ -1,3 +1,20 @@
+const getTestImports = (useWeb3) => useWeb3
+  ? `const Greeter = artifacts.require("Greeter");
+const { expect } = require("chai");
+`
+  : `const { expect } = require("chai");
+  `
+
+const getTestContractInstance = (useWeb3) => useWeb3
+  ? `    const greeter = await Greeter.new("Hello, world!");
+
+`
+  : `    const Greeter = await ethers.getContractFactory("Greeter");
+    const greeter = await Greeter.deploy("Hello, world!");
+    
+    await greeter.deployed();
+`
+
 const getScriptsImports = (useWeb3) => useWeb3
   ? `const bre = require("@nomiclabs/buidler");
 const Greeter = artifacts.require("Greeter");
@@ -21,6 +38,8 @@ module.exports = (answers) => {
     artifactImport: useWeb3
       ? "const CounterArtifact = artifacts.require('Counter');\n"
       : "const CounterArtifact = require(\"../artifacts/Counter.json\");\n",
+    testImports: getTestImports(useWeb3),
+    testContractInstance: getTestContractInstance(useWeb3),
     scriptsImports: getScriptsImports(useWeb3),
     scriptsDeploy: getScriptsDeploy(useWeb3)
   }

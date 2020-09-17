@@ -1,12 +1,8 @@
-<%- artifactImport -%>
-const { expect } = require("chai");
+<%- testImports -%>
 
 describe("Greeter", function() {
   it("Should return the new greeting once it's changed", async function() {
-    const Greeter = await ethers.getContractFactory("Greeter");
-    const greeter = await Greeter.deploy("Hello, world!");
-    
-    await greeter.deployed();
+<%- testContractInstance -%>
     expect(await greeter.greet()).to.equal("Hello, world!");
 
     await greeter.setGreeting("Hola, mundo!");
